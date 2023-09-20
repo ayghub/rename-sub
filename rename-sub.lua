@@ -15,7 +15,7 @@ function rename_subtitle()
         local movie_path, _ = path_ext(mp.get_property("path"))
         if os.rename(sub_path..sub_ext, movie_path..sub_ext) then
           print("done!")
-        mp.osd_message("Subtitle line copied to clipboard")
+        mp.osd_message("Subtitle was renamed")
         end
 end
 
