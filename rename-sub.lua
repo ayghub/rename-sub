@@ -11,11 +11,15 @@ function path_ext(filename)
 end
 
 function rename_subtitle()
-        local sub_path, sub_ext = path_ext(mp.get_property("current-tracks/sub/external-filename"))
+	local external_file = mp.get_property("current-tracks/sub/external-filename")
+        local sub_path, sub_ext = path_ext(external_file)
         local movie_path, _ = path_ext(mp.get_property("path"))
         if os.rename(sub_path..sub_ext, movie_path..sub_ext) then
-          print("done!")
-        mp.osd_message("Subtitle was renamed")
+		mp.osd_message("The subtitle was renamed!")
+		print("The subtitle was renamed!")
+	else
+		print("file already exists!")
+		mp.osd_message("file already exists!")
         end
 end
 
